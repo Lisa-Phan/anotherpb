@@ -30,14 +30,9 @@ These are variables in the run_mc.sh file
  + ***RESI_TO_MAKE_MOL2***: The PDB of residues that need custom parameterization (ligand, metal, water)
 
 **How to run a test sample**  
-<cd test_project>
-<bash ../run_mc.sh>
 
 ```assembly
-.text
-main:
-        la   $s0, A              # load variables A and B into registers
-        lw   $s0, 0($s0)
-        la   $s1, B
-        lw   $s1, 0($s1)
+   cd test_project
+   bash ../run_mc.sh
+        
 ```
