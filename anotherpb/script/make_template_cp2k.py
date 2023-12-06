@@ -27,6 +27,9 @@ PRMTOP_FILE = sys.argv[1]
 INPCRD_FILE = sys.argv[2]
 OUTFILE = sys.argv[3]
 
+PRMTOP_FILE = os.path.abspath(PRMTOP_FILE)
+INPCRD_FILE = os.path.abspath(INPCRD_FILE)
+OUTFILE = os.path.abspath(OUTFILE)
 ########################
 ###### FUNCTIONS #######
 ########################
@@ -202,7 +205,7 @@ def get_cp2k_template(prmtop_file, inpcrd_file):
                 COORD_FILE_FORMAT CRD
                 COORD_FILE_NAME {INPCRD_FILE}
             &END TOPOLOGY
-            {textwrap.indent(ELEMENT_TYPE_BLOCK, '        ')}
+{textwrap.indent(ELEMENT_TYPE_BLOCK, '        ')}
             &KIND EP
                 GHOST
                 ELEMENT H

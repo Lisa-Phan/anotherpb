@@ -35,10 +35,6 @@ AMBER_ATOM_DICT = {
         'element': 'N',
         'extra': False
     },
-    'XC': {
-        'element': 'C',
-        'extra': True
-    },
     'H1': {
         'element': 'H',
         'extra': False
@@ -123,12 +119,20 @@ AMBER_ATOM_DICT = {
         'element': 'H',
         'extra': False
     },
+    '2C': {
+        'element': 'C', 
+        'extra': True
+    },    
     '3C': {
         'element': 'C',
         'extra': False
     },
+    'XC': {
+        'element': 'C',
+        'extra': False
+    },
     'Y1': {
-        'element': 'O',
+        'element': 'N',
         'extra': True
     },
     'Y2': {
@@ -144,7 +148,23 @@ AMBER_ATOM_DICT = {
         'extra': True
     },
     'Y5': {
-        'element': 'N',
+        'element': 'O',
+        'extra': True
+    },
+    'Y6': {
+        'element': 'O',
+        'extra': True
+    },
+    'Y7': { 
+        'element': 'O',
+        'extra': True
+    },
+    'Y8': {
+        'element': 'N', 
+        'extra': True
+    },
+    'Y9': {
+        'element': 'O', 
         'extra': True
     },
     'SH': {
@@ -175,6 +195,14 @@ AMBER_ATOM_DICT = {
         'element': 'N',
         'extra': True
     },
+    'Z4': {
+        'element': 'N',
+        'extra': True 
+   },
+   'Z5': {
+       'element': 'O', 
+       'extra': True
+   },
     'CV': {
         'element': 'C',
         'extra': False
