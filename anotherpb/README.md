@@ -29,9 +29,6 @@ These are variables in the run_mc.sh file
 3. Substrate, water, and all other things of interest in the active site environment
  + ***RESI_TO_MAKE_MOL2***: The PDB of residues that need custom parameterization (ligand, metal, water)
 
-
-
-
-
 **How to run a test sample**  
-
+ + <cd test_project>
+ + <bash ../run_mc.sh>
