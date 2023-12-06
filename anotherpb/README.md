@@ -1,10 +1,16 @@
 2023/12/5
 
-Mini script to create files for simulation runs
+Mini script to create files for simulation runs on TACC.
 This is mainly a series of patchwork scripts to help generate
 parameter files for CP2K equilibration, using MCBP amber files
 and non-bonded metal parameterization protocol
 
+**Env set up note**   
+TACC preinstalled:
+gaussian16
+CP2k
+
+conda:
 Require installation of conda ambertools to use MCPB 
 
 **Usage note**   
@@ -44,3 +50,8 @@ cp gaussian_result_pack/* ./
 bash ../run_mc.sh
         
 ```
+
+**To do**
+Automate the gaussian solver
+Include the MCPB code with modifications here at some point
+
