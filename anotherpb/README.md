@@ -33,6 +33,14 @@ These are variables in the run_mc.sh file
 
 ```bash
 cd test_project
+
+#unload sample input and gaussian files into current directory
+#this is because there are dependencies in the MCPB.py workflow
+#requiring files to be in single directory
+
+cp sample_input/* ./
+cp gaussian_result_pack/* ./
+
 bash ../run_mc.sh
         
 ```
