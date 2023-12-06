@@ -31,8 +31,8 @@ These are variables in the run_mc.sh file
 
 **How to run a test sample**  
 
-```assembly
-   cd test_project
-   bash ../run_mc.sh
+```bash
+cd test_project
+bash ../run_mc.sh
         
 ```
