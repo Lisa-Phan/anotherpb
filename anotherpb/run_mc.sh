@@ -30,6 +30,10 @@ MCPB_INP=MCPB.inp
 eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
 conda activate ambertools
 
+#main_dir is the current directory of the script
+#use this as reference to call other mini functions  
+MAIN_DIR="$( cd "$( dirname "$0" )" && pwd )"
+SCRIPT_DIR=$MAIN_DIR/script
 
 ####### A. MCPB TO GET PARAMETERS #########
 
@@ -45,11 +49,11 @@ sed -i  -e '$ d' $RECONSTRUCTED.pdb
 #awk '$4 == "FE" && $6 == 601' $ORI >> mini.pdb
 #awk '$4 == "FE" && $6 == 602' $ORI >> mini.pdb
 
-#### MANUALLY ALERT 
+#### MANUAL ALERT 
 # ADD H-bond to mini.pbd to get resi_to_make_mol2 ####
 
 #fix pdb
-python3 script/hfix.py $RECONSTRUCTED.pdb $RECONSTRUCTED.hfix.pdb HIP_136:HIE,HIP_235:HIE,GLH_103:GLU,GLH_198:GLU,GLH_229:GLU
+python3 $SCRIPT_DIR/hfix.py $RECONSTRUCTED.pdb $RECONSTRUCTED.hfix.pdb HIP_136:HIE,HIP_235:HIE,GLH_103:GLU,GLH_198:GLU,GLH_229:GLU
 
 
 #create mol2 file for the waters and iron
@@ -58,13 +62,13 @@ cat $RESI_TO_MAKE_MOL2.pdb
 
 ################ MAKE MOL2 FILES ################
 #The irons
-python3 script/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 601 -c 3 -a FE -b "" -o FE1.mol2 
-python3 script/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 602 -c 3 -a FE -b "" -o FE2.mol2
+python3 $SCRIPT_DIR/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 601 -c 3 -a FE -b "" -o FE1.mol2 
+python3 $SCRIPT_DIR/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 602 -c 3 -a FE -b "" -o FE2.mol2
 
 #The waters
-python3 script/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 715 -c 0,0,0 -a OW,HW,HW -b "1 1 2 1","2 1 3 1" -o HOH.mol2 
-python3 script/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 764 -c 0,0,0 -a OW,HW,HW -b "1 1 2 1","2 1 3 1" -o HOH1.mol2
-python3 script/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 871 -c 0,0,0 -a OW,HW,HW -b "1 1 2 1","2 1 3 1" -o HOH2.mol2
+python3 $SCRIPT_DIR/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 715 -c 0,0,0 -a OW,HW,HW -b "1 1 2 1","2 1 3 1" -o HOH.mol2 
+python3 $SCRIPT_DIR/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 764 -c 0,0,0 -a OW,HW,HW -b "1 1 2 1","2 1 3 1" -o HOH1.mol2
+python3 $SCRIPT_DIR/getmol2.py -i $RESI_TO_MAKE_MOL2.pdb -r 871 -c 0,0,0 -a OW,HW,HW -b "1 1 2 1","2 1 3 1" -o HOH2.mol2
 
 #Run parmchk for some file
 parmchk2 -i HOH.mol2 -o HOH.frcmod -f mol2
@@ -111,19 +115,18 @@ mv *large_mk.com gaussian_job/large_mk/6YD0_large_mk.gjf
 # 2. Move result files back to common directory
 
 ##### STEP 2 ######
-MCPB.py -i MCBP.inp -s 2
+MCPB.py -i MCPB.inp -s 2
 
 ##TODO: implement fix for PDB file writer
 
 #### STEP 3 ####
-MCPB.py -i MCBP.inp -s 3
+MCPB.py -i MCPB.inp -s 3
 
 #### STEP 4 ####
-MCPB.py -i MCBP.inp -s 4
+MCPB.py -i MCPB.inp -s 4
 
 #### RUN TLEAP  ####
 tleap -f -s 6YD0_tleap.in > 6YD0_tleap.out 
 
 # TODO: FIX TLEAP input generator to use TIP3 water
-# TODO: FIX MCPB writer
 
