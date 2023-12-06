@@ -3,11 +3,11 @@
 Mini script to create files for simulation runs
 This is mainly a series of patchwork scripts to help generate
 parameter files for CP2K equilibration, using MCBP amber files
-and non-bonded metal parameterization model
+and non-bonded metal parameterization protocol
 
 Require installation of conda ambertools to use MCPB 
 
-*Usage note* 
+**Usage note** 
 At the current stage, the error handling of the script is minimal. 
 The .sh file serves mostly as a mean to keep track of commandlines 
 and data transformation that are otherwise manually retyped/require manual
