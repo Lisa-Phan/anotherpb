@@ -11,8 +11,8 @@ Require installation of conda ambertools to use MCPB
 At the current stage, the error handling of the script is minimal. 
 
 The .sh file serves mostly as a mean to keep track of commandlines 
-and data transformation that are otherwise manually retyped/require manual
-adjustment in the original protocol. 
+and data transformation that are otherwise manually retyped or involve manual editing,
+which generally is not great. 
 
 * Not an automated pipeline at the moment
 * Each new job would require modification of the script and several manual steps
