@@ -131,6 +131,10 @@ AMBER_ATOM_DICT = {
         'element': 'C',
         'extra': False
     },
+    'XC19': {
+          'element': 'C', 
+          'extra': False
+    },
     'Y1': {
         'element': 'N',
         'extra': True

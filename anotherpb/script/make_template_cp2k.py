@@ -30,6 +30,7 @@ OUTFILE = sys.argv[3]
 PRMTOP_FILE = os.path.abspath(PRMTOP_FILE)
 INPCRD_FILE = os.path.abspath(INPCRD_FILE)
 OUTFILE = os.path.abspath(OUTFILE)
+
 ########################
 ###### FUNCTIONS #######
 ########################
@@ -144,8 +145,8 @@ def get_cp2k_template(prmtop_file, inpcrd_file):
     """
 
     BOX_X, BOX_Y, BOX_Z = get_box_dimensions(inpcrd_file)
-    PRMTOP_FILE = os.path.abspath(prmtop_file)
-    INPCRD_FILE = os.path.abspath(inpcrd_file)
+    #PRMTOP_FILE = os.path.abspath(prmtop_file)
+    #INPCRD_FILE = os.path.abspath(inpcrd_file)
     ELEMENT_TYPE_BLOCK = get_element_kind_block(prmtop_file)
 
 
@@ -206,6 +207,9 @@ def get_cp2k_template(prmtop_file, inpcrd_file):
                 COORD_FILE_NAME {INPCRD_FILE}
             &END TOPOLOGY
 {textwrap.indent(ELEMENT_TYPE_BLOCK, '        ')}
+            &KIND XC19
+                ELEMENT C
+            &END KIND
             &KIND EP
                 GHOST
                 ELEMENT H
@@ -226,6 +230,9 @@ def write_cp2k_template(cp2k_template, outfile):
 
 
 if __name__ == '__main__':
+    print(PRMTOP_FILE)
+    print(INPCRD_FILE)
+    print(OUTFILE)
     write_cp2k_template(cp2k_template = get_cp2k_template(PRMTOP_FILE, INPCRD_FILE), 
                         outfile = OUTFILE)
 
