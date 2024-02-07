@@ -1,0 +1,16 @@
+**Note on running an NEB job with ORCA**
+
+At the simplest state, ORCA takes in input from 2 xyz file of the 
+following format
+
+"""
+atom_count
+comment
+C 000 000 100
+H 000 000 100 
+"""
+
+Input and output coordinate should be optimized prior to the run
+For the situation where multiplicity for spin at the iron center are different, 
+perform the run at two different multiplicity and look at where the intersection might be
+along the images
